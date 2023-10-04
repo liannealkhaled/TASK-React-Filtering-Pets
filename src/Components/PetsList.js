@@ -1,3 +1,4 @@
+import { useState } from "react";
 import pets from "../petsData";
 import PetItem from "./PetItem";
 
@@ -43,3 +44,6 @@ function PetsList() {
 }
 
 export default PetsList;
+
+
+const [query, setquery ] = useState( )
