@@ -45,5 +45,5 @@ function PetsList() {
 
 export default PetsList;
 
-
-const [query, setquery ] = useState( )
+// const [query, setquery ] = useState( )
+//
