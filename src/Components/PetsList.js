@@ -6,10 +6,25 @@ function PetsList() {
   const petList = pets.map((pet) => <PetItem pet={pet} key={pet.id} />);
 
   const [query, setQuery] = useState("");
+  const [type, setType] = useState(" ");
 
   const handlesearch = (event) => {
     setQuery(event.target.value);
+    // setType(event.targer.value);
   };
+
+  const handletype = (event) => {
+    setType(event.target.value);
+
+    // pets.filter( (setType)=>{ if} )
+    // return pets.filter(setType == pets.pet.type);
+  };
+
+  // search bar #4
+  // const petlist2 = pets.filter((pet) => {
+  // pet.name.toLowerCase() && query.toLocaleLowerCase()
+  //   })
+  // };
 
   return (
     <section id="doctors" className="doctor-section pt-140">
@@ -30,19 +45,20 @@ function PetsList() {
                   aria-label="Search"
                   aria-describedby="search-addon"
                 />
+                {/*                 
                 <button
                   onClick={() => {
                     setQuery("");
                   }}
                 >
                   clear query
-                </button>
+                </button> */}
               </div>
-              {query}
+              {/* {query} */}
               <br />
               Type:
-              <select className="form-select">
-                <option value="" selected>
+              <select className="form-select" onChange={handletype}>
+                <option value="type" selected>
                   All
                 </option>
                 <option value="Cat">Cat</option>
@@ -60,6 +76,3 @@ function PetsList() {
 }
 
 export default PetsList;
-
-// const [query, setquery ] = useState( )
-//
