@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 function PetItem({ pet }) {
   const [imageSrc, setImageSrc] = useState(pet.image);
+
   const changeImage = () => {
     setImageSrc(pet.image2);
   };
@@ -9,7 +10,7 @@ function PetItem({ pet }) {
   return (
     <div className="col-lg-4 col-md-8 col-sm-10">
       <div className="single-doctor">
-        <img className="image" alt={pet.name} src={pet.image} />
+        <img className="image" alt={pet.name} src={imageSrc} />
         <div className="content">
           <h3>{pet.name}</h3>
           <button onClick={changeImage} type="button" className="btn btn-info">

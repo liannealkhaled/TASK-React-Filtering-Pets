@@ -5,6 +5,12 @@ import PetItem from "./PetItem";
 function PetsList() {
   const petList = pets.map((pet) => <PetItem pet={pet} key={pet.id} />);
 
+  const [query, setQuery] = useState("");
+
+  const handlesearch = (event) => {
+    setQuery(event.target.value);
+  };
+
   return (
     <section id="doctors" className="doctor-section pt-140">
       <div className="container">
@@ -19,10 +25,20 @@ function PetsList() {
                   type="search"
                   className="form-control rounded"
                   placeholder="Search"
+                  value={query}
+                  onChange={handlesearch}
                   aria-label="Search"
                   aria-describedby="search-addon"
                 />
+                <button
+                  onClick={() => {
+                    setQuery("");
+                  }}
+                >
+                  clear query
+                </button>
               </div>
+              {query}
               <br />
               Type:
               <select className="form-select">
