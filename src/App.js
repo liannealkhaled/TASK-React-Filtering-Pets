@@ -9,6 +9,10 @@ import PetsList from "./Components/PetsList";
 function App() {
   return (
     <div className="App">
+      <div className="">
+        <h1>HELLO</h1>
+        <img src="https://i.ibb.co/2ZzG5pj/kitten-love-1.png" />
+      </div>
       <PetsList />
     </div>
   );

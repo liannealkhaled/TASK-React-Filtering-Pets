@@ -1,30 +1,37 @@
 import { useState } from "react";
 import pets from "../petsData";
 import PetItem from "./PetItem";
+import SetQuery from "./SetQuery";
 
 function PetsList() {
-  const petList = pets.map((pet) => <PetItem pet={pet} key={pet.id} />);
-
   const [query, setQuery] = useState("");
-  const [type, setType] = useState(" ");
+  const [type, setType] = useState("");
 
-  const handlesearch = (event) => {
-    setQuery(event.target.value);
-    // setType(event.targer.value);
-  };
+  // const handlesearch = (event) => {
+  //   setQuery(event.target.value);
+  //   // setType(event.targer.value);
+  // };
 
-  const handletype = (event) => {
-    setType(event.target.value);
+  // const handletype = (event) => {
+  //   setType(event.target.value);
 
-    // pets.filter( (setType)=>{ if} )
-    // return pets.filter(setType == pets.pet.type);
-  };
+  // pets.filter( (setType)=>{ if} )
+  // return pets.filter(setType == pets.pet.type);
 
   // search bar #4
   // const petlist2 = pets.filter((pet) => {
   // pet.name.toLowerCase() && query.toLocaleLowerCase()
   //   })
   // };
+
+  const petList = pets
+    .filter((pet) => {
+      return pet.name.toLocaleLowerCase().includes(query.toLocaleLowerCase());
+    })
+    .filter((pet) => {
+      return pet.type.toLocaleLowerCase().includes(type.toLocaleLowerCase());
+    })
+    .map((pet) => <PetItem pet={pet} key={pet.id} />);
 
   return (
     <section id="doctors" className="doctor-section pt-140">
@@ -40,8 +47,7 @@ function PetsList() {
                   type="search"
                   className="form-control rounded"
                   placeholder="Search"
-                  value={query}
-                  onChange={handlesearch}
+                  onChange={(e) => setQuery(e.target.value)}
                   aria-label="Search"
                   aria-describedby="search-addon"
                 />
@@ -57,8 +63,13 @@ function PetsList() {
               {/* {query} */}
               <br />
               Type:
-              <select className="form-select" onChange={handletype}>
-                <option value="type" selected>
+              <select
+                className="form-select"
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+              >
+                <option value="" selected>
                   All
                 </option>
                 <option value="Cat">Cat</option>

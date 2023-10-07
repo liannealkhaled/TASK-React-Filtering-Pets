@@ -2,9 +2,14 @@ import { useState } from "react";
 
 function PetItem({ pet }) {
   const [imageSrc, setImageSrc] = useState(pet.image);
+  const [show, setShow] = useState(true);
 
   const changeImage = () => {
     setImageSrc(pet.image2);
+  };
+
+  const RemoveImage = () => {
+    setShow(false);
   };
 
   return (
@@ -16,9 +21,10 @@ function PetItem({ pet }) {
           <button onClick={changeImage} type="button" className="btn btn-info">
             Pet
           </button>
-          <button type="button" class="btn btn-info  m-2">
+          <button onClick={RemoveImage} type="button" class="btn btn-info  m-2">
             Adopt
           </button>
+          {show ? <h1>NOT ADDOPTED</h1> : <h1>ADDOPTED</h1>}
         </div>
       </div>
     </div>
